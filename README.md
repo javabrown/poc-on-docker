@@ -1,0 +1,32 @@
+# poc-on-docker
+Dockerized POC 
+
+
+Postgress Install and run and connect to client
+-----------------------------------------------
+1) Install postgres image 
+    docker pull postgres:9.6-alpine
+
+2) Vefify Installation
+    docker images | grep 'postgres'
+
+3) Run the instance
+    docker run -p 5432:5432 -e POSTGRES_DB=dev -e POSTGRES_PASSWORD=password postgres:9.6-alpine
+
+4) Connect the running postgress instance from console:
+    docker exec -it 749e1d425477 psql -U postgres dev (RK - 749e1d425477 is container-id)
+
+
+
+
+Install Redis In docker and run
+-----------------------------------------------
+
+1) Install Docker Image 
+    docker pull redis:3.2-alpine   (alpine is minimul version of image)
+
+2) Verify the Installation 
+    docker pull redis:3.2-alpine
+
+3) Run installed redis image on port 6379:6379
+    docker run -p 6379:6379 redis:3.2-alpine
