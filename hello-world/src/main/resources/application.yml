@@ -1,0 +1,47 @@
+logging:
+  level:
+    .: error
+    org.springframework: ERROR
+    com.mkyong: ERROR
+
+spring:
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "off"
+
+server:
+  email: rkhan@javabrown.com
+
+---
+
+---
+# Development profile is used for running instance outside aws
+spring:
+  profiles: dev
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://${database_hostname:localhost}:${database_port:5432}/${database_name:dev}
+    username: ${database_username:postgres}
+    password: ${database_password:password}
+    driver-class-name: org.postgresql.Driver
+  session:
+    store-type: redis
+  redis:
+    host: ${redis_host:localhost}
+    port: ${redis_port:6379}
+
+server:
+  port: 8080
+cloud:
+  aws:
+    credentials:
+      profileName: 114377430413
+    region:
+      static: us-east-1
+ 
